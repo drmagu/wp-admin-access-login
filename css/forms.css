@@ -1,0 +1,16 @@
+.dbs_form br { display:none; } /* hack cuz WP insists on adding <br /> tags after a closing </label> */
+.dbs_form label { display: block;float: left; width: 130px; }
+.dbs_form input[type="text"], .dbs_form input[type="password"],
+.dbs_form input[type="email"] {
+	margin-left: 10px;
+	padding: 4px 8px;
+	background: #f0f0f0;
+	border: 1px solid #ccc;
+}
+.dbs_form input[type="text"]:focus, .dbs_form input[type="password"]:focus,
+.dbs_form input[type="email"]:focus {
+	border-color: #aaa;
+}
+
+.dbs_errors { padding: 8px; border: 1px solid #f50; margin: 0 0 15px; }
+.dbs_info { padding: 8px; border: 1px solid #0f5; margin: 0 0 15px; }
