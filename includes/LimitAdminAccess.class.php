@@ -1,4 +1,5 @@
 <?php
+namespace drmagu\limit_admin_access_login;
 
 class LimitAdminAccess {
 	

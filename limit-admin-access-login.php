@@ -7,15 +7,31 @@ Version: 0.9.3
 Author: DrMagu
 Author URI: http://www.drmagu.com
 */
+namespace drmagu\limit_admin_access_login;
 
-require_once(__DIR__.'/includes/LimitAdminAccess.class.php');
-require_once(__DIR__.'/includes/Controller.class.php');
-require_once(__DIR__.'/includes/LoginModel.class.php');
-require_once(__DIR__.'/includes/LoginView.class.php');
+/*
+ * Main Plugin Class 
+ */
+ 
+class Main {
+	
+	public function	__construct() {
+		$this->main();
+	}
+	
+	private function main() {
+		require_once(__DIR__.'/includes/LimitAdminAccess.class.php');
+		require_once(__DIR__.'/includes/LoginController.class.php');
+		require_once(__DIR__.'/includes/LoginModel.class.php');
+		require_once(__DIR__.'/includes/LoginView.class.php');
 
-new LimitAdminAccess();
-$dbs_model = new LoginModel($_POST);
-$dbs_view = new LoginView($dbs_model);
-new Controller($_POST, $dbs_view, $dbs_model);
+		new LimitAdminAccess();
 
+		$dbs_model = new LoginModel($_POST);
+		$dbs_view = new LoginView($dbs_model);
+		new LoginController($_POST, $dbs_view, $dbs_model);
+	}
+ 	
+}
 
+new Main();

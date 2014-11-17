@@ -1,4 +1,6 @@
 <?php
+namespace drmagu\limit_admin_access_login;
+use \WP_Error;
 
 class LoginModel {
 	
@@ -16,7 +18,7 @@ class LoginModel {
 		if( isset( $post_array['dbs_login_nonce'] ) ) $this->nonce = $post_array['dbs_login_nonce'];
 		
 		/* used for tracking error messages */
-		/* uses the WP global $wp_error */
+		/* uses the WP global WP_Error class */
 		if ( isset($wp_error) ) {
 			$this->wp_error = $wp_error;
 		} else {
