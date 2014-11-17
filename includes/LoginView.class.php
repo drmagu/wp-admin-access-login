@@ -25,12 +25,15 @@ class LoginView {
 			// set this to true so the CSS is loaded
 			$this->dbs_load_css = true;
 			
-			$output = $this->dbs_login_form_fields();
+			$output = $this->login_form_view();
 		} else {
 			// could show some logged in user info here
 			$current_user = wp_get_current_user();
+			/**
 			$output = 'You are currently signed in as "<span style="color:#0A0">'.$current_user->user_login.'</span>"';
 			$output .= '<br /><a href="/wp-login.php?action=logout">'.'Click here to logout'.'</a>';
+			**/
+			$output = $this->logout_form_view($current_user);
 		}
 		return $output;
 	}
@@ -45,13 +48,26 @@ class LoginView {
 	 
 		// this variable is set to TRUE if the short code is used on a page/post
 		if ( ! $this->dbs_load_css )
-			return; // this means that neither short code is present, so we get out of here
+			return; // this means that the short code is not present, so we get out of here
 	
 		wp_print_styles('dbs-form-css');
 	}
 	
 	/* HTML Markup and Stuff */
-	private function dbs_login_form_fields() {
+	/* displays error messages from form submissions */
+	private function dbs_show_error_messages() {
+		if($codes = $this->model->get_error_codes()) {
+			echo '<div class="dbs_errors">';
+				// Loop error codes and display errors
+			   foreach($codes as $code){
+					$message = $this->model->get_error_message($code);
+					echo '<span class="error"><strong>' . __('Error') . '</strong>: ' . $message . '</span><br/>';
+				}
+			echo '</div>';
+		}	
+	}
+	
+	private function login_form_view() {
 			
 		ob_start(); 
 			
@@ -81,17 +97,24 @@ class LoginView {
 		return ob_get_clean();
 	}
 	
-	// displays error messages from form submissions
-	private function dbs_show_error_messages() {
-		if($codes = $this->model->get_error_codes()) {
-			echo '<div class="dbs_errors">';
-				// Loop error codes and display errors
-			   foreach($codes as $code){
-					$message = $this->model->get_error_message($code);
-					echo '<span class="error"><strong>' . __('Error') . '</strong>: ' . $message . '</span><br/>';
-				}
-			echo '</div>';
-		}	
+	private function logout_form_view($current_user) {
+		ob_start();
+		?>
+        
+        You are currently signed in as "<span style="color:#0A0">'.<?= $current_user->user_login ?>.'</span>"
+		
+		<form id="dbs_logout_form"  class="dbs_form" action="" method="post">
+        	<fieldset>
+                <input type="hidden" name="dbs_action" value="logout" />
+                <input type="hidden" name="dbs_login_nonce" value="<?php echo wp_create_nonce('dbs-login-nonce'); ?>"/>
+                <div>
+                <input id="dbs_login_submit" type="submit" value="Logout"/>
+                </div>
+        	</fieldset>
+        </form>
+        
+		<?php
+		return ob_get_clean();
 	}
 	
 }

@@ -84,5 +84,7 @@ class LoginModel {
 	}
 	
 	
-	public function logout_user() { }
+	public function logout_user() { 
+		wp_logout();
+	}
 }
