@@ -8,7 +8,6 @@ class LimitAdminAccess {
 	
 	public function __construct() {
 		$this->add_actions();
-		// $this->dbs_disable_adminbar();
 	}
 	
 	private function add_actions() {
