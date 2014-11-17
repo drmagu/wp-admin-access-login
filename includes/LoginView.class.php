@@ -61,7 +61,8 @@ class LoginView {
 				<fieldset>
 					<p>
 						<label for="dbs_slname">User Name</label>
-						<input name="dbs_slname" id="dbs_slname" class="required" type="text"/>
+						<input name="dbs_slname" id="dbs_slname" class="required" 
+                        	type="text" value="<?= $this->model->get_username() ?>"/>
 					</p>
 					<p>
 						<label for="dbs_user_pass">Password</label>

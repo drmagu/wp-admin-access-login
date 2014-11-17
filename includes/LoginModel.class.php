@@ -5,8 +5,16 @@ class LoginModel {
 	private $post_array;
 	private $wp_error;
 	
+	private $username = "";
+	private $password = "";
+	private $nonce = "";
+	
 	public function __construct($post_array) {
 		$this->post_array = $post_array;
+		if( isset( $post_array['dbs_slname'] ) ) $this->username = $post_array['dbs_slname'];
+		if( isset( $post_array['dbs_user_pass'] ) ) $this->password = $post_array['dbs_user_pass'];
+		if( isset( $post_array['dbs_login_nonce'] ) ) $this->nonce = $post_array['dbs_login_nonce'];
+		
 		/* used for tracking error messages */
 		/* uses the WP global $wp_error */
 		if ( isset($wp_error) ) {
@@ -24,8 +32,11 @@ class LoginModel {
 		return $this->wp_error->get_error_message( $code );
 	}
 	
+	public function get_username() {
+		return $this->username;	
+	}
+	
 	public function login_user() {
-		echo "Logging in";
 
 		if(isset($this->post_array['dbs_slname']) && wp_verify_nonce($this->post_array['dbs_login_nonce'], 'dbs-login-nonce')) {
 					
