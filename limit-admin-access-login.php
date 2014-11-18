@@ -14,7 +14,7 @@ namespace drmagu\limit_admin_access_login;
  * The VersionCheck class is not namespaced
  */
  
-require_once (__DIR__.'/includes/VersionCheck.class.php');
+require_once (__DIR__.'/classes/VersionCheck.class.php');
 new \VersionCheck(__FILE__, '3.5', '5.3');
 		
 /*
@@ -22,8 +22,8 @@ new \VersionCheck(__FILE__, '3.5', '5.3');
  * Looks for class files in the "includes/" directory
  */
  
-require_once (__DIR__.'/includes/Autoloader.class.php');
-new Autoloader(__DIR__.'/includes/');
+require_once (__DIR__.'/classes/Autoloader.class.php');
+new Autoloader(__DIR__.'/classes/');
 
 /*
  * Main Plugin Class 
