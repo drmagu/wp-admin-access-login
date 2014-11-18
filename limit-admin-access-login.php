@@ -13,19 +13,9 @@ namespace drmagu\limit_admin_access_login;
  * Setup the autoloader
  * Looks for class files in the "includes/" directory
  */
- spl_autoload_register(function($class){
+require_once (__DIR__.'/includes/Autoloader.class.php');
+new Autoloader(__DIR__.'/includes/');
 
-	/* strip any namespaces */							
-	$arr_class = explode('\\', $class);
-	$class = end($arr_class);
-	
-	if ( is_file(__DIR__.'/includes/'.$class.'.class.php') ) 
-	{  
-		require_once(__DIR__.'/includes/'.$class.'.class.php'); 								
-	}
-	
-});
- 
 /*
  * Main Plugin Class 
  */
