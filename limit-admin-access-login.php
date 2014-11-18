@@ -10,9 +10,18 @@ Author URI: http://www.drmagu.com
 namespace drmagu\limit_admin_access_login;
 
 /*
+ * Check version of WordPress and PHP
+ * The VersionCheck class is not namespaced
+ */
+ 
+require_once (__DIR__.'/includes/VersionCheck.class.php');
+new \VersionCheck(__FILE__, '3.5', '5.3');
+		
+/*
  * Setup the autoloader
  * Looks for class files in the "includes/" directory
  */
+ 
 require_once (__DIR__.'/includes/Autoloader.class.php');
 new Autoloader(__DIR__.'/includes/');
 
@@ -25,7 +34,7 @@ class Main {
 	public function	__construct() {
 		$this->main();
 	}
-	
+		
 	private function main() {
 		/* limit the access */
 		new LimitAdminAccess();
