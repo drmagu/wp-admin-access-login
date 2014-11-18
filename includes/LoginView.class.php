@@ -101,7 +101,7 @@ class LoginView {
 		ob_start();
 		?>
         
-        You are currently signed in as "<span style="color:#0A0">'.<?= $current_user->user_login ?>.'</span>"
+        You are currently signed in as "<span style="color:#0A0"><?= $current_user->user_login ?></span>"
 		
 		<form id="dbs_logout_form"  class="dbs_form" action="" method="post">
         	<fieldset>
