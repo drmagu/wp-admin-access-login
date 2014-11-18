@@ -29,10 +29,6 @@ class LoginView {
 		} else {
 			// could show some logged in user info here
 			$current_user = wp_get_current_user();
-			/**
-			$output = 'You are currently signed in as "<span style="color:#0A0">'.$current_user->user_login.'</span>"';
-			$output .= '<br /><a href="/wp-login.php?action=logout">'.'Click here to logout'.'</a>';
-			**/
 			$output = $this->logout_form_view($current_user);
 		}
 		return $output;
