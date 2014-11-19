@@ -57,7 +57,7 @@ class LoginModel {
 			
 				if(!$user) {
 					// if the user name doesn't exist
-					$this->wp_error->add('invalid_username', __('Invalid a username'));
+					$this->wp_error->add('invalid_username', __('Invalid username'));
 				}
 			}
 			
