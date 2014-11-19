@@ -5,9 +5,11 @@ class LoginView {
 	
 	private $dbs_load_css = false;
 	private $model;
+	private $plugin_dir_url;
 	
-	public function  __construct(LoginModel $model) {
+	public function  __construct(LoginModel $model, $plugin_dir_url) {
 		$this->model = $model;
+		$this->plugin_dir_url = $plugin_dir_url;
 		
 		$this->init();
 	}
@@ -36,7 +38,7 @@ class LoginView {
 	
 	// register our form css
 	public function dbs_register_css() {
-		wp_register_style('dbs-form-css', plugin_dir_url( __FILE__ ) . '/css/forms.css');
+		wp_register_style('dbs-form-css', $this->plugin_dir_url . '/css/forms.css');
 	}
 	
 	// load our form css

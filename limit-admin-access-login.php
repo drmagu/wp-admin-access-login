@@ -41,7 +41,7 @@ class Main {
 
 		/* login & logout functionality */
 		$dbs_model = new LoginModel($_POST);
-		$dbs_view = new LoginView($dbs_model);
+		$dbs_view = new LoginView($dbs_model, plugin_dir_url( __FILE__ ));
 		new LoginController($_POST, $dbs_view, $dbs_model);
 	}
  	
