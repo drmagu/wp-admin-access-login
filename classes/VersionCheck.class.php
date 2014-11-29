@@ -1,4 +1,5 @@
 <?php
+if ( !class_exists( 'VersionCheck' ) ):
 class VersionCheck {
 	
 	private $plugin_file;
@@ -62,3 +63,4 @@ class VersionCheck {
 		return $this->is_compatible;
 	}
 }
+endif;
