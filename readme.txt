@@ -3,16 +3,18 @@
 Contributors:      DrMagu
 Plugin Name:       Limit wp-admin access
 Plugin URI:        http://www.drmagu.com/using-wordpress-for-simple-websites-plugin-684.htm
-Tags:              front end login, block wp-admin
+Tags:              front end login, block wp-admin, login shortcode
 Author URI:        http://www.drmagu.com
 Author:            DrMagu
 Donate link:       https://thesparksconnection.com/donate
 Requires at least: 3.5
-Tested up to:      4.01
-Stable tag:        1.04
-Version:           1.04
+Tested up to:      4.0.1
+Stable tag:        trunk
+Version:           1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+When not logged in, it prevents any and all access to the admin area, or any related URLs .. such as /wp-login.php
 
 == Description ==
 * When not logged in, it prevents any and all access to the admin area, or any related URLs .. such as /wp-login.php etc.
