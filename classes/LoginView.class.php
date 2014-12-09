@@ -15,8 +15,8 @@ class LoginView {
 	}
 	
 	private function init() {
-		add_action('init', [$this, 'dbs_register_css'] );
-		add_action('wp_footer', [$this, 'dbs_print_css'] );
+		add_action('init', array( $this, 'dbs_register_css' ) );
+		add_action('wp_footer', array( $this, 'dbs_print_css' ) );
 	}
 	
 	public function login_form() {

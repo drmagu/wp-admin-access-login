@@ -18,7 +18,7 @@ class VersionCheck {
 	}
 	
 	private function init() {
-		register_activation_hook( $this->plugin_file, [ $this, 'check_version' ] );
+		register_activation_hook( $this->plugin_file, array( $this, 'check_version' ) );
 		add_action( 'admin_init', array( $this, 'check_version' ) );
 		add_action( 'admin_notices', array( $this, 'version_notice' ) );
 	}

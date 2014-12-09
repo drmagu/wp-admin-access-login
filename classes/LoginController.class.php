@@ -22,14 +22,14 @@ class LoginController {
 
 	private function init() {
 		/* handle the shortcode */
-		add_shortcode('login_form', [ $this->view,'login_form' ] );
+		add_shortcode('login_form', array( $this->view,'login_form' ) );
 		
 		/* handle the form post */
 		if (isset($this->post_array['dbs_action'])) if ($this->post_array['dbs_action'] == "login") {
-			add_action( 'init', [$this->model, 'login_user'] );
+			add_action( 'init', array( $this->model, 'login_user' ) );
 		}
 		if (isset($this->post_array['dbs_action'])) if ($this->post_array['dbs_action'] == "logout") {
-			add_action( 'init', [$this->model, 'logout_user'] );
+			add_action( 'init', array( $this->model, 'logout_user' ) );
 		}
 	}
 		
